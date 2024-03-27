@@ -1,7 +1,8 @@
-Boss AI Training Game
+# Boss AI Training Game
 
 This project implements a simple game where a player character fights against a boss character. The boss character is trained using machine learning techniques to optimize its strategy and increase its chances of winning against the player.
-Game Description
+
+## Game Description
 
 In the game, the player and boss characters have their own attributes and actions:
 
@@ -12,7 +13,8 @@ In the game, the player and boss characters have their own attributes and action
         Stun Attack: Always deals 1 damage but stuns the player, preventing it from attacking on its next turn.
 
 The boss's strategy is to choose between these two attacks based on probabilities. Initially, the boss chooses attacks randomly, but it learns to optimize its strategy through machine learning training.
-Training Process
+
+## Training Process
 
 The boss AI is trained using a machine learning model, specifically a recurrent neural network (RNN) implemented using TensorFlow and Keras. The training process involves the following steps:
 
