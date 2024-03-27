@@ -23,3 +23,10 @@ The boss AI is trained using a machine learning model, specifically a recurrent 
 3. **Model Evaluation and Refinement**: The trained model is evaluated by playing against the player character. The model's performance is analyzed, and if necessary, the model is refined and retrained with additional data.
 
 4. **Convergence**: The training process continues until the boss AI converges to a strategy that maximizes its chances of winning against the player.
+
+## Usage
+
+To run the training process, execute the `main.py` script. Make sure you have TensorFlow and NumPy installed in your Python environment.
+
+```bash
+python main.py
