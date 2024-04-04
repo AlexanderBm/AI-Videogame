@@ -13,4 +13,4 @@ def play_game(player, boss):
             label = 1
             break
     
-    return moves, boss.getHP(), label
+    return moves, label

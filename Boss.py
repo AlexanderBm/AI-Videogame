@@ -28,8 +28,8 @@ class Boss:
         dmg = player.deal_dmg()
         self.HP -= dmg
 
-    def getHP(self):
-        return self.HP
+    def getProbs(self):
+        return self.p_basic, self.p_stun
 
     def dead(self):
         return self.HP <= 0

@@ -6,9 +6,9 @@ from MaxProb import get_max
 from WeightedAverage import weighted_avg
 
 if __name__ == "__main__":
-    moves, hps, labels, moves_np, labels_np, run_p2 = [], [], [], [], [], [0.5]
+    moves, labels, moves_np, labels_np, run_p2 = [], [], [], [], [0.5]
 
-    n_iter = 200 # the higher the more accurate
+    n_iter = 30 # the higher the more accurate
     data_in = 1 # amount of data received per training (works best at 1)
     for i in range(1,n_iter):
         for j in range(1, data_in+1):
@@ -17,21 +17,18 @@ if __name__ == "__main__":
 
             player = Player()
             boss = Boss(p1, p2)
-            move, hp, label = play_game(player, boss)
+            move, label = play_game(player, boss)
             moves.append(move)
-            hps.append(hp)
             labels.append(label)
 
             # needed so it doesn't get stuck
             player_50 = Player()
             boss_50 = Boss(.5, .5)
-            move_50, hp_50, label_50 = play_game(player_50, boss_50)
+            move_50, label_50 = play_game(player_50, boss_50)
             moves.append(move_50)
-            hps.append(hp_50)
             labels.append(label_50)
 
         moves_np = np.asarray(moves)
-        hps_np = np.asarray(hps)
         labels_np = np.asarray(labels)
 
         max_moves, max_p =  get_max(moves_np, labels_np)
@@ -44,3 +41,9 @@ if __name__ == "__main__":
         print("Iterations Prob of using Stun Attack " + str(new_p2))
         print("Running/True Prob of using Stun Attack " + str(weighted_avg(run_p2)))
         print("------------------------------------------------")
+    
+    optimized_boss = Boss(1 - weighted_avg(run_p2), weighted_avg(run_p2))
+    opt_p_basic, opt_p_stun = optimized_boss.getProbs()
+    print("PROBABILITY OF THE OPTIMIZED BOSS USING THE BASIC ATTACK: " + str(opt_p_basic))
+    print("PROBABILITY OF THE OPTIMIZED BOSS USING THE STUN ATTACK: " + str(opt_p_stun))
+
